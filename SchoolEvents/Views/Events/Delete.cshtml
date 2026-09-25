@@ -1,0 +1,81 @@
+﻿@model SchoolEvents.Models.Event
+
+@{
+    ViewData["Title"] = "Изтриване на събитие";
+}
+
+<h1>Изтриване на събитие</h1>
+
+<h3 class="text-danger">
+    Сигурни ли сте, че искате да изтриете това събитие?
+</h3>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+
+        <dl class="row">
+
+            <dt class="col-sm-3">
+                Заглавие
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Title
+            </dd>
+
+            <dt class="col-sm-3">
+                Описание
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Description
+            </dd>
+
+            <dt class="col-sm-3">
+                Дата и час
+            </dt>
+            <dd class="col-sm-9">
+                @Model.EventDate.ToString("dd.MM.yyyy HH:mm")
+            </dd>
+
+            <dt class="col-sm-3">
+                Място
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Location
+            </dd>
+
+            <dt class="col-sm-3">
+                Категория
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Category.Name
+            </dd>
+
+            <dt class="col-sm-3">
+                Организатор
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Organizer.Name
+            </dd>
+
+        </dl>
+
+        <form asp-action="Delete" method="post">
+
+            <input type="hidden" asp-for="Id" />
+
+            <button type="submit"
+                    class="btn btn-danger">
+                Потвърди изтриването
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Отказ
+            </a>
+
+        </form>
+
+    </div>
+</div>

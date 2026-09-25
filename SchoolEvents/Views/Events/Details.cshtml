@@ -1,0 +1,70 @@
+﻿@model SchoolEvents.Models.Event
+
+@{
+    ViewData["Title"] = "Детайли за събитието";
+}
+
+<h1>Детайли за събитието</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+
+        <dl class="row">
+            <dt class="col-sm-3">
+                Заглавие
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Title
+            </dd>
+
+            <dt class="col-sm-3">
+                Описание
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Description
+            </dd>
+
+            <dt class="col-sm-3">
+                Дата и час
+            </dt>
+            <dd class="col-sm-9">
+                @Model.EventDate.ToString("dd.MM.yyyy HH:mm")
+            </dd>
+
+            <dt class="col-sm-3">
+                Място
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Location
+            </dd>
+
+            <dt class="col-sm-3">
+                Категория
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Category.Name
+            </dd>
+
+            <dt class="col-sm-3">
+                Организатор
+            </dt>
+            <dd class="col-sm-9">
+                @Model.Organizer.Name
+            </dd>
+        </dl>
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.Id"
+           class="btn btn-warning">
+            Редактирай
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Назад към списъка
+        </a>
+
+    </div>
+</div>

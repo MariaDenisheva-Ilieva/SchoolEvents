@@ -1,0 +1,110 @@
+﻿@model SchoolEvents.Models.Event
+
+@{
+    ViewData["Title"] = "Създаване на събитие";
+}
+
+<h1>Създаване на събитие</h1>
+
+<h4>Училищно събитие</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+
+        <form asp-action="Create" method="post">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger">
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">
+                    Заглавие
+                </label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">
+                    Описание
+                </label>
+                <textarea asp-for="Description"
+                          class="form-control"
+                          rows="4"></textarea>
+                <span asp-validation-for="Description"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="EventDate" class="form-label">
+                    Дата и час
+                </label>
+                <input asp-for="EventDate"
+                       class="form-control"
+                       type="datetime-local" />
+                <span asp-validation-for="EventDate"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Location" class="form-label">
+                    Място
+                </label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CategoryId" class="form-label">
+                    Категория
+                </label>
+
+                <select asp-for="CategoryId"
+                        asp-items="ViewBag.Categories"
+                        class="form-select">
+                    <option value="">-- Изберете категория --</option>
+                </select>
+
+                <span asp-validation-for="CategoryId"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="OrganizerId" class="form-label">
+                    Организатор
+                </label>
+
+                <select asp-for="OrganizerId"
+                        asp-items="ViewBag.Organizers"
+                        class="form-select">
+                    <option value="">-- Изберете организатор --</option>
+                </select>
+
+                <span asp-validation-for="OrganizerId"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">
+                    Създай
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Назад към списъка
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

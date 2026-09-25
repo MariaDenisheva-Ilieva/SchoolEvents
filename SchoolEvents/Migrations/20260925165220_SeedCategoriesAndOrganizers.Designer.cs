@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolEvents.Data;
 
@@ -11,9 +12,11 @@ using SchoolEvents.Data;
 namespace SchoolEvents.Migrations
 {
     [DbContext(typeof(SchoolEventsDbContext))]
-    partial class SchoolEventsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260925165220_SeedCategoriesAndOrganizers")]
+    partial class SeedCategoriesAndOrganizers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,27 +46,27 @@ namespace SchoolEvents.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Спорт"
+                            Name = "Sports"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Култура"
+                            Name = "Culture"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Образование"
+                            Name = "Education"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Технологии"
+                            Name = "Technology"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Благотворителност"
+                            Name = "Charity"
                         });
                 });
 
@@ -137,31 +140,31 @@ namespace SchoolEvents.Migrations
                         {
                             Id = 1,
                             Email = "maria.petrova@school.bg",
-                            Name = "Мария Петрова"
+                            Name = "Maria Petrova"
                         },
                         new
                         {
                             Id = 2,
                             Email = "ivan.georgiev@school.bg",
-                            Name = "Иван Георгиев"
+                            Name = "Ivan Georgiev"
                         },
                         new
                         {
                             Id = 3,
                             Email = "elena.dimitrova@school.bg",
-                            Name = "Елена Димитрова"
+                            Name = "Elena Dimitrova"
                         },
                         new
                         {
                             Id = 4,
                             Email = "georgi.ivanov@school.bg",
-                            Name = "Георги Иванов"
+                            Name = "Georgi Ivanov"
                         },
                         new
                         {
                             Id = 5,
                             Email = "nikol.nikolova@school.bg",
-                            Name = "Никол Николова"
+                            Name = "Nikol Nikolova"
                         });
                 });
 
