@@ -15,15 +15,26 @@ namespace SchoolEvents.Controllers
             _context = context;
         }
 
-        // READ - показва всички събития
-        public async Task<IActionResult> Index()
+        // READ - показва всички събития и позволява търсене
+        public async Task<IActionResult> Index(string? searchString)
         {
-            var events = await _context.Events
+            var events = _context.Events
                 .Include(e => e.Category)
                 .Include(e => e.Organizer)
-                .ToListAsync();
+                .AsQueryable();
 
-            return View(events);
+            // Ако е въведен текст за търсене
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                events = events.Where(e =>
+                    e.Title.Contains(searchString) ||
+                    e.Description.Contains(searchString) ||
+                    e.Location.Contains(searchString));
+            }
+
+            ViewBag.SearchString = searchString;
+
+            return View(await events.ToListAsync());
         }
 
         // DETAILS - показва информация за избрано събитие
@@ -64,7 +75,7 @@ namespace SchoolEvents.Controllers
             return View();
         }
 
-        // CREATE - записва новото събитие
+        // CREATE - записва новото събитие в базата
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Event eventModel)
@@ -123,7 +134,7 @@ namespace SchoolEvents.Controllers
             return View(eventModel);
         }
 
-        // EDIT - записва промените
+        // EDIT - записва промените в базата
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Event eventModel)

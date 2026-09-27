@@ -1,6 +1,41 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Поверителност";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="container">
+    <h1>Поверителност</h1>
+
+    <hr />
+
+    <div class="alert alert-info">
+        <h4>Защита на информацията</h4>
+
+        <p>
+            Приложението „Училищни събития“ е разработено
+            с учебна цел за управление на училищни събития.
+        </p>
+    </div>
+
+    <h4>Съхранявани данни</h4>
+
+    <p>
+        В системата се съхранява информация за:
+    </p>
+
+    <ul>
+        <li>училищни събития;</li>
+        <li>категории на събитията;</li>
+        <li>организатори на събитията.</li>
+    </ul>
+
+    <p>
+        Данните се използват единствено за целите
+        на приложението.
+    </p>
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="btn btn-secondary">
+        Назад към началната страница
+    </a>
+</div>
